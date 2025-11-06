@@ -8,14 +8,9 @@ const result = document.getElementById("result");
 
 
 function findPais(idPais, idRegion){
-    getPais(idPais)
-        .then((pais) => {result.textContent = `País: ${pais}`;})
-        .catch((error) => {result.textContent = error;});
-    if(Number.isInteger(idRegion)){
-        getRegión(idPais, idRegion)
-            .then((region) => {result.textContent += ` - Región: ${region}`})
-            .catch((error) => {result.textContent = error});
-    }
+    Promise.all([getPais(idPais), getRegión(idPais,idRegion)])
+    .then(([pais, region]) => {result.textContent = `Pais: ${pais} - Región: ${region}`;})
+    .catch((err) => {result.textContent = err});
 }
 
 btn.addEventListener("click", () => {
