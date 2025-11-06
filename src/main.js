@@ -7,18 +7,14 @@ const btn = document.getElementById("buscar");
 const result = document.getElementById("result");
 
 
-async function findPais(idPais, idRegion) {
-    try {
-        const pais = await getPais(idPais);
-        if(Number.isInteger(idRegion)){
-            const region = await getRegión(idPais, idRegion);
-            result.textContent = `País: ${pais} - Región: ${region}`;
-        } else {
-            result.textContent = `País: ${pais}`;
-        }
-    } catch (error) {
-        console.log(error, "ERROR");
-        result.textContent = error;
+function findPais(idPais, idRegion) {
+    getPais(idPais)
+        .then((pais) => {result.textContent = `País: ${pais}`;})
+        .catch((error) => {result.textContent = error;});
+    if(Number.isInteger(idRegion)){
+        getRegión(idPais, idRegion)
+            .then((region) => {result.textContent += ` - Región: ${region}`})
+            .catch((error) => {result.textContent = error});
     }
 }
 
