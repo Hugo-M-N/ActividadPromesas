@@ -8,12 +8,19 @@ const result = document.getElementById("result");
 
 
 function findPais(idPais, idRegion){
-
+    getPais(idPais)
+        .then((pais) => {result.textContent = `País: ${pais}`;})
+        .catch((error) => {result.textContent = error;});
+    if(Number.isInteger(idRegion)){
+        getRegión(idPais, idRegion)
+            .then((region) => {result.textContent += ` - Región: ${region}`})
+            .catch((error) => {result.textContent = error});
+    }
 }
 
 btn.addEventListener("click", () => {
-    const idPais = pais.value;
-    const idRegion = region.value;
+    const idPais = parseInt(pais.value);
+    const idRegion = parseInt(region.value);
 
     try {
         findPais(idPais,idRegion);
