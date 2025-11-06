@@ -1,0 +1,38 @@
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+
+body {
+    background-color: black;
+    font-family: system-ui;
+    text-align: center;
+    color: white;
+
+
+}
+
+h1 {
+    font-size: 4rem;
+}
+
+h2 {
+    font-size: 3rem;
+}
+
+input {
+    font-size: 2rem;
+    text-align: center;
+    width: 5rem;
+    height: 5rem;
+}
+
+button {
+    margin: 3rem 0;
+    font-size: 3rem;
+    padding: 0.5rem;
+}
+
+p {
+    font-size: 2rem;
+}
